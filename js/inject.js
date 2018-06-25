@@ -1,10 +1,7 @@
 $(function() {
 	var suffixs = ["com", "net", "org", "cc", "cn"];
 	var token = window.um.getToken();
-	var check = document.createElement("a");
-	check.href = "javascript:;"
-	check.innerText = "check";
-	check.onclick = function() {
+	var domain_name_check = function() {
 		$("div.table table tbody tr td[data-field='domain_name']").map(function() {
 			var td = this;
 			var item = $(td).find("input[type='checkbox']").val();
@@ -39,8 +36,16 @@ $(function() {
 			$(td).append(div);
 		})
 	};
-	$("div.table table thead tr th[data-field='domain_name']").append(check);
-	$("div.batch").append(check);
+	var check_thead = document.createElement("a");
+	check_thead.href = "javascript:;"
+	check_thead.innerText = "check";
+	check_thead.onclick = domain_name_check;
+	var check_footer = document.createElement("a");
+	check_footer.href = "javascript:;"
+	check_footer.innerText = "check";
+	check_footer.onclick = domain_name_check;
+	$("div.table table thead tr th[data-field='domain_name']").append(check_thead);
+	$("div.batch").append(check_footer);
 
 	console.log("content-inject...");
 });
