@@ -1,5 +1,5 @@
 $(function() {
-	var suffixs = ["com", "net", "org", "cc", "cn"];
+	var suffixs = ["com", "net", "org", "cc", "cn", "com.cn"];
 	var token = window.um.getToken();
 	var domain_name_check = function() {
 		$("div.table table tbody tr td[data-field='domain_name']").map(function() {
@@ -29,6 +29,7 @@ $(function() {
 				span = document.createElement("span");
 				span.id = callback;
 				span.className = "com";
+				span.innerText = ".";
 				$(div).append(span);
 
 				eval(callback + " = function(data) {checkdomain('" + callback + "', data, '" + suffix + "')}");
